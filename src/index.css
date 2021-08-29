@@ -4,3 +4,9 @@
     box-sizing: border-box;
     font-size: "PingFang SC", "Microsoft Yahei","sans-serif";
 }
+.container {
+    margin-top: 80px;
+    padding: 16px 5vw;
+    min-height: 80vh;
+    position: relative;
+}

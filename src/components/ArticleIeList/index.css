@@ -1,0 +1,14 @@
+.article {
+    text-align: center;
+}
+.article-item {
+    margin-top: 20px;
+    color: grey;
+}
+.article-item:hover {
+    color: black;
+    cursor: pointer;
+}
+.article-title {
+    font-size: 30px;
+}

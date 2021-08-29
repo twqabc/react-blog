@@ -1,8 +1,12 @@
 import React, { Component } from 'react'
+import PubSub from 'pubsub-js'
 import { NavLink } from 'react-router-dom'
 import './index.css'
 
 export default class Nav extends Component {
+    state = {
+        nav: ''
+    }
     handleBuger(event) {
         const navMenu = document.querySelector(".nav-menu")
         const navMenuItems = document.querySelectorAll(".nav-menu li")
@@ -17,16 +21,20 @@ export default class Nav extends Component {
         })
     }
     render() {
-        return (
+        let token1 = PubSub.subscribe('nav-admin',(msg, data) => {
+           this.setState({nav:data})
+        })
+        console.log(this.state.nav)
+        return (    
             <nav>
-          <div className="logo">风华前端</div>
+          <div className="logo"><NavLink className='logo-link' to="/">Xt's font Blog</NavLink></div>
             <ul className="nav-menu">
                 <li><NavLink to="/">Home</NavLink></li>
                 <li><NavLink to="/about">About</NavLink></li>
-                <li><NavLink to="/word">Work</NavLink></li>
-                <li><NavLink to="/myresume">MyResume</NavLink></li>
+                <li><NavLink to="/work">Work</NavLink></li>
                 <li><NavLink to="/blog">Blog</NavLink></li>
                 <li><NavLink to="/signin">Signin</NavLink></li>
+                {this.state.nav && <li><NavLink to="/admin/articleedit">write-art</NavLink></li>}
             </ul>
             <div className="burger" onClick={this.handleBuger}>
                 <div className="top-line"></div>
