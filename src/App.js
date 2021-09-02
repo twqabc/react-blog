@@ -1,4 +1,4 @@
-import { Route } from 'react-router-dom'
+import { Redirect, Route,Switch } from 'react-router-dom'
 
 import Nav from "./components/Nav"
 import Footer from './components/Foooter'
@@ -11,15 +11,17 @@ import ArticleEdit from './pages/admin/ArticleEdit';
 function App() {
   return (
     <div className="container">
-
      <Nav/>
-                <Footer/>
-
-    <Route path="/signin" component={Signin}/>
-    <Route path="/about" component={About}/>
-    <Route path="/work" component={Work}/>
-    <Route path="/blog" component={Blog}/>
-    <Route path="/admin/articleedit" component={ArticleEdit}/>
+     <Footer/>
+     <Switch>
+        <Route path="/" component={Blog}></Route>
+        <Route path="/signin" component={Signin}/>
+        <Route path="/about" component={About}/>
+        <Route path="/work" component={Work}/>
+        <Route path="/blog" component={Blog}/>
+        <Route path="/admin/articleedit" component={ArticleEdit}/>
+        <Redirect to="/blog"></Redirect>
+    </Switch>
     </div>
   );
 }
